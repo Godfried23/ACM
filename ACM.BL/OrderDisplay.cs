@@ -14,6 +14,6 @@ namespace ACM.BL
         public List<OrderDisplayItem> OrderDisplayItemList { get; set; }
         public int OrderId { get; set; }
         public Address ShippingAddress { get; set; }
+        public int ShippingAddressId { get; set; }
     }
-
 }

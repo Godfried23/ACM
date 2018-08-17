@@ -8,19 +8,16 @@ namespace ACM.BL
 {
     public class OrderRepository
     {
-        public Order Retrieve(int orderItemId)
+        /// <summary>
+        /// Retrieve one order.
+        /// </summary>
+        public Order Retrieve(int orderId)
         {
-            //Create the instance of the Order class
-            //Pass in the requested Id
-            Order order = new Order(orderItemId);
+            // Create the instance of the Order class
+            // Pass in the requested Id
+            Order order = new Order(orderId);
 
-            //Code that retrieves the defined product
-
-            //Temporary hard coded values to return a popluated product
-            if (orderItemId == 10)
-            {
-                order.OrderDate = new DateTimeOffset(2014, 4, 14, 10, 00, 00, TimeSpan.FromHours(5));
-            }
+            // Code that retrieves the defined order
 
             return order;
         }
@@ -29,31 +26,23 @@ namespace ACM.BL
         {
             OrderDisplay orderDisplay = new OrderDisplay();
 
-            //Code that retrieves the dfined order fields
+            // Code that retrieves the defined order fields
+            var addressRepository = new AddressRepository();
 
-            //Temporary hard coded data
+            // Temporary Hard-coded data
             if (orderId == 10)
             {
                 orderDisplay.FirstName = "Bilbo";
                 orderDisplay.LastName = "Baggins";
-                orderDisplay.OrderDate = new DateTimeOffset(2014, 4, 14, 10, 00, 00, TimeSpan.FromHours(5));
-                orderDisplay.ShippingAddress = new Address()
-                {
-                    AddressType = 1,
-                    StreetLine1 = "Bag End",
-                    StreetLine2 = "Bagshot row",
-                    City = "Hobbiton",
-                    State = "Shire",
-                    Country = "Middle Earth",
-                    PostalCode = "144"
-                };
+                orderDisplay.OrderDate = new DateTimeOffset(2014, 4, 14, 10, 00, 00, new TimeSpan(7, 0, 0));
+                orderDisplay.ShippingAddress = addressRepository.Retrieve(1);
             }
 
             orderDisplay.OrderDisplayItemList = new List<OrderDisplayItem>();
 
-            //Code that retrieves the order items
+            // Code that retrieves the order items
 
-            //Temporary hard coded data
+            // Temporary Hard-coded data
             if (orderId == 10)
             {
                 var orderDisplayItem = new OrderDisplayItem()
@@ -73,12 +62,32 @@ namespace ACM.BL
                 orderDisplay.OrderDisplayItemList.Add(orderDisplayItem);
             }
 
+
             return orderDisplay;
         }
 
-        public bool Save()
+        /// <summary>
+        /// Saves the current order.
+        /// </summary>
+        /// <returns></returns>
+        public bool Save(Order order)
         {
-            return true;
+            var success = true;
+
+            if (order.HasChanges && order.IsValid)
+            {
+                if (order.IsNew)
+                {
+                    // Call an Insert Stored Procedure
+
+                }
+                else
+                {
+                    // Call an Update Stored Procedure
+                }
+            }
+            return success;
         }
+
     }
 }

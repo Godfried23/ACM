@@ -1,65 +1,95 @@
 ﻿using System;
-using ACM.BL;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using ACM.BL;
 
 namespace ACM.BLTest
 {
     [TestClass]
     public class CustomerTest
     {
+
         [TestMethod]
         public void FullNameTestValid()
         {
-            //Arrange
+            //-- Arrange
             Customer customer = new Customer();
             customer.FirstName = "Bilbo";
             customer.LastName = "Baggins";
 
             string expected = "Baggins, Bilbo";
 
-            //Act
+            //-- Act
             string actual = customer.FullName;
 
-            //Assert
+            //-- Assert
             Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
         public void FullNameFirstNameEmpty()
         {
-            //Arrange
+            //-- Arrange
             Customer customer = new Customer();
             customer.LastName = "Baggins";
-
             string expected = "Baggins";
 
-            //Act
+            //-- Act
             string actual = customer.FullName;
 
-            //Assert
+            //-- Assert
             Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
         public void FullNameLastNameEmpty()
         {
-            //Arrange
+            //-- Arrange
             Customer customer = new Customer();
             customer.FirstName = "Bilbo";
-
             string expected = "Bilbo";
 
-            //Act
+            //-- Act
             string actual = customer.FullName;
 
-            //Assert
+            //-- Assert
             Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void IntegerTypeTest()
+        {
+            //-- Arrange
+            int i1;
+            i1 = 42;
+
+            //-- Act
+            int i2 = i1;
+            i2 = 2;
+
+            //-- Assert
+            Assert.AreEqual(42, i1);
+        }
+
+
+        [TestMethod]
+        public void ObjectTypeTest()
+        {
+            //-- Arrange
+            var c1 = new Customer();
+            c1.FirstName = "Bilbo";
+
+            //-- Act
+            var c2 = c1;
+            c2.FirstName = "Frodo";
+
+            //-- Assert
+            Assert.AreEqual("Frodo", c1.FirstName);
         }
 
         [TestMethod]
         public void StaticTest()
         {
-            //Arrange
+            //-- Arrange
             var c1 = new Customer();
             c1.FirstName = "Bilbo";
             Customer.InstanceCount += 1;
@@ -72,44 +102,45 @@ namespace ACM.BLTest
             c3.FirstName = "Rosie";
             Customer.InstanceCount += 1;
 
-            //Act
+            //-- Act
 
-
-            //Assert
+            //-- Assert
             Assert.AreEqual(3, Customer.InstanceCount);
         }
 
         [TestMethod]
         public void ValidateValid()
         {
-            //Arrange
+            //-- Arrange
             var customer = new Customer();
             customer.LastName = "Baggins";
             customer.EmailAddress = "fbaggins@hobbiton.me";
 
             var expected = true;
 
-            //Act
+            //-- Act
             var actual = customer.Validate();
 
-            //Assert
+            //-- Assert
             Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
         public void ValidateMissingLastName()
         {
-            //Arrange
+            //-- Arrange
             var customer = new Customer();
             customer.EmailAddress = "fbaggins@hobbiton.me";
 
             var expected = false;
 
-            //Act
+            //-- Act
             var actual = customer.Validate();
 
-            //Assert
+            //-- Assert
             Assert.AreEqual(expected, actual);
         }
+
     }
+
 }

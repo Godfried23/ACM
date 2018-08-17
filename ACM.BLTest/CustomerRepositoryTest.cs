@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ACM.BL;
-
+using System.Collections.Generic;
 
 namespace ACM.BLTest
 {
@@ -12,7 +11,7 @@ namespace ACM.BLTest
         [TestMethod]
         public void RetrieveExisting()
         {
-            //Arrange
+            //-- Arrange
             var customerRepository = new CustomerRepository();
             var expected = new Customer(1)
             {
@@ -21,11 +20,12 @@ namespace ACM.BLTest
                 LastName = "Baggins"
             };
 
-            //Act
+            //-- Act
             var actual = customerRepository.Retrieve(1);
 
-            //Assert
+            //-- Assert
             //Assert.AreEqual(expected, actual);
+
             Assert.AreEqual(expected.CustomerId, actual.CustomerId);
             Assert.AreEqual(expected.EmailAddress, actual.EmailAddress);
             Assert.AreEqual(expected.FirstName, actual.FirstName);
@@ -35,7 +35,7 @@ namespace ACM.BLTest
         [TestMethod]
         public void RetrieveExistingWithAddress()
         {
-            //Arrange
+            //-- Arrange
             var customerRepository = new CustomerRepository();
             var expected = new Customer(1)
             {
@@ -43,33 +43,34 @@ namespace ACM.BLTest
                 FirstName = "Frodo",
                 LastName = "Baggins",
                 AddressList = new List<Address>()
-                {
-                    new Address()
                     {
-                        AddressType = 1,
-                        StreetLine1 = "Bag End",
-                        StreetLine2 = "Bagshot row",
-                        City = "Hobbiton",
-                        State = "Shire",
-                        Country = "Middle Earth",
-                        PostalCode = "144"
-                    },
-                    new Address()
-                    {
-                        AddressType = 2,
-                        StreetLine1 = "Green Dragon",
-                        City = "Bywater",
-                        State = "Shire",
-                        Country = "Middle Earth",
-                        PostalCode = "146"
+                        new Address()
+                        {
+                            AddressType = 1,
+                            StreetLine1 = "Bag End",
+                            StreetLine2 = "Bagshot row",
+                            City = "Hobbiton",
+                            State = "Shire",
+                            Country = "Middle Earth",
+                            PostalCode = "144"
+                        },
+                        new Address()
+                        {
+                            AddressType = 2,
+                            StreetLine1 = "Green Dragon",
+                            City = "Bywater",
+                            State = "Shire",
+                            Country = "Middle Earth",
+                            PostalCode = "146"
+                        }
                     }
-                }
             };
 
-            //Act
+
+            //-- Act
             var actual = customerRepository.Retrieve(1);
 
-            //Assert
+            //-- Assert
             Assert.AreEqual(expected.CustomerId, actual.CustomerId);
             Assert.AreEqual(expected.EmailAddress, actual.EmailAddress);
             Assert.AreEqual(expected.FirstName, actual.FirstName);
@@ -84,6 +85,7 @@ namespace ACM.BLTest
                 Assert.AreEqual(expected.AddressList[i].Country, actual.AddressList[i].Country);
                 Assert.AreEqual(expected.AddressList[i].PostalCode, actual.AddressList[i].PostalCode);
             }
+
         }
     }
 }

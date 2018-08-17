@@ -14,33 +14,61 @@ namespace ACM.BL
         {
             addressRepository = new AddressRepository();
         }
+
+        /// <summary>
+        /// Retrieve one customer.
+        /// </summary>
         public Customer Retrieve(int customerId)
         {
-            //Create the instance of the Customer class
+            // Create the instance of the Customer class
             Customer customer = new Customer(customerId);
-            customer.AddressList = addressRepository.RetrieveByCustomerId(customerId).ToList();
+            customer.AddressList = addressRepository.
+                RetrieveByCustomerId(customerId).ToList();
 
-            //Code that retriecves the defined customer
+            // Code that retrieves the defined customer
 
-            //Temporary hard coded values to return a populated customer
+            // Temporary hard coded values to return 
+            // a populated customer
             if (customerId == 1)
             {
                 customer.EmailAddress = "fbaggins@hobbiton.me";
                 customer.FirstName = "Frodo";
                 customer.LastName = "Baggins";
             }
-
             return customer;
         }
 
+        /// <summary>
+        /// Retrieves all customers.
+        /// </summary>
         public List<Customer> Retrieve()
         {
+            // Code that retrieves all customers
             return new List<Customer>();
         }
 
-        public bool Save()
+        /// <summary>
+        /// Saves the current customer.
+        /// </summary>
+        /// <returns></returns>
+        public bool Save(Customer customer)
         {
-            return true;
+            var success = true;
+
+            if (customer.HasChanges && customer.IsValid)
+            {
+                if (customer.IsNew)
+                {
+                    // Call an Insert Stored Procedure
+
+                }
+                else
+                {
+                    // Call an Update Stored Procedure
+                }
+            }
+            return success;
         }
+
     }
 }

@@ -1,24 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Reflection;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using ACM.BL;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-namespace ACM.BLTest
+namespace ACM.BL.Tests
 {
-    [TestClass]
-    public class OrderRepositoryTest
+    [TestClass()]
+    public class OrderRepositoryTests
     {
-        [TestMethod]
+        [TestMethod()]
         public void RetrieveOrderDisplayTest()
         {
-            //Arrange
+            //-- Arrange
             var orderRepository = new OrderRepository();
             var expected = new OrderDisplay()
             {
                 FirstName = "Bilbo",
                 LastName = "Baggins",
-                OrderDate = new DateTimeOffset(2014, 4, 14, 10, 00, 00, TimeSpan.FromHours(5)),
+                OrderDate = new DateTimeOffset(2014, 4, 14, 10, 00, 00, new TimeSpan(7, 0, 0)),
                 ShippingAddress = new Address()
                 {
                     AddressType = 1,
@@ -46,10 +47,10 @@ namespace ACM.BLTest
                 }
             };
 
-            //Act
+            //-- Act
             var actual = orderRepository.RetrieveOrderDisplay(10);
 
-            //Assert
+            //-- Assert
             Assert.AreEqual(expected.FirstName, actual.FirstName);
             Assert.AreEqual(expected.LastName, actual.LastName);
             Assert.AreEqual(expected.OrderDate, actual.OrderDate);

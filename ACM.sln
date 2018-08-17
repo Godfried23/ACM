@@ -9,6 +9,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{C42989F6
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ACM.BLTest", "ACM.BLTest\ACM.BLTest.csproj", "{8235425F-5A89-4E9E-8B35-2447B912A156}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Acme.Common", "Acme.Common\Acme.Common.csproj", "{1599B6BE-1CFE-4C91-86B2-C233775DFA09}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Acme.CommonTest", "Acme.CommonTest\Acme.CommonTest.csproj", "{92218E6B-70A9-44A0-B294-649AF8B381E2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,12 +27,21 @@ Global
 		{8235425F-5A89-4E9E-8B35-2447B912A156}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8235425F-5A89-4E9E-8B35-2447B912A156}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8235425F-5A89-4E9E-8B35-2447B912A156}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1599B6BE-1CFE-4C91-86B2-C233775DFA09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1599B6BE-1CFE-4C91-86B2-C233775DFA09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1599B6BE-1CFE-4C91-86B2-C233775DFA09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1599B6BE-1CFE-4C91-86B2-C233775DFA09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92218E6B-70A9-44A0-B294-649AF8B381E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92218E6B-70A9-44A0-B294-649AF8B381E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92218E6B-70A9-44A0-B294-649AF8B381E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92218E6B-70A9-44A0-B294-649AF8B381E2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{8235425F-5A89-4E9E-8B35-2447B912A156} = {C42989F6-FBBB-4020-8756-2CA9FDD0D434}
+		{92218E6B-70A9-44A0-B294-649AF8B381E2} = {C42989F6-FBBB-4020-8756-2CA9FDD0D434}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FFCF36B0-C315-4F2C-83A6-D2819D0B9424}

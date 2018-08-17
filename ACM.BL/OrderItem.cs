@@ -23,16 +23,6 @@ namespace ACM.BL
         public int ProductId { get; set; }
         public decimal? PurchasePrice { get; set; }
 
-        public OrderItem Retrieve(int orderItemId)
-        {
-            return new OrderItem();
-        }
-
-        public bool Save()
-        {
-            return true;
-        }
-
         public bool Validate()
         {
             var isValid = true;
